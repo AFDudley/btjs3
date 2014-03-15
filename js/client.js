@@ -6,6 +6,7 @@ function NewRPCClient(config) {
     if (config === undefined) {
         config = {};
     }
+    var timeout = (config.timeout === undefined) ? 0 : config.timeout;
     var async = (config.async === undefined) ? false : config.async;
     return {
         // A default prefix for rpc method names
@@ -112,6 +113,7 @@ function NewRPCClient(config) {
         _rpc: new $.JsonRpcClient({
             ajaxUrl: '/api',
             async: async,
+            timeout: timeout,
         }),
 
         // Makes rpc request to method (e.g. 'info.battle').  Add arguments
@@ -150,6 +152,7 @@ function NewRPCClient(config) {
 function run_demo() {
     var config = {
         async: false,
+        timeout: 1000 * 60 * 2, // 2 minute timeout
     }
     var client = NewRPCClient(config);
 

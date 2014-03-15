@@ -52,6 +52,7 @@
                 return self._getSocket(onmessage_cb);
             },
             async: true,
+            timeout: 0,
         }, options);
 
         // Declare an instance version of the onmessage callback to wrap 'this'.

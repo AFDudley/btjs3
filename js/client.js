@@ -177,7 +177,7 @@ function run_demo() {
 }
 
 $(document).ready(function() {
-    var world = run_demo();
-    console.log("World created:");
-    console.log(world);
+    // var world = run_demo();
+    // console.log("World created:");
+    // console.log(world);
 });

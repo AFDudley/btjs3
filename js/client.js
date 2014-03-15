@@ -24,7 +24,7 @@ function NewRPCClient(config) {
         // Returns the last element in the history
         last: function() {
             return history[history.length - 1];
-        }
+        },
 
         signup: function(username, password, email) {
             var that = this;
@@ -138,7 +138,7 @@ function NewRPCClient(config) {
         },
 
         _add_to_history: function(thing) {
-            self.history.push(thing);
+            this.history.push(thing);
         }
     };
 }

@@ -50,7 +50,7 @@
             /// Custom socket supplier for using an already existing socket
             getSocket: function(onmessage_cb) {
                 return self._getSocket(onmessage_cb);
-            }.
+            },
             async: true,
         }, options);
 

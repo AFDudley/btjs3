@@ -1,0 +1,1 @@
+var evtSource = new EventSource("http://127.0.0.1:8080/events"); evtSource.onmessage = function(e) { console.log("message: " + e.data); }

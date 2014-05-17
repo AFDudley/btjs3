@@ -179,8 +179,36 @@ function run_demo() {
     return world;
 }
 
+function prep() {
+    var config = {
+        async: false,
+        timeout: 1000 * 60 * 2, // 2 minute timeout
+    }
+    var client = NewRPCClient(config);
+
+    client.login('atkr', 'atkrpassword');
+    var login = client.last();
+    if (login.error) {
+        client.signup('atkr', 'atkrpassword', 'atkr@example.com');
+        var signup = client.last();
+        console.log(signup);
+        if (signup.error) {
+            return
+        }
+    }
+    var evtSource = new EventSource("/events");
+    var ME;
+    evtSource.onmessage = function(e) { ME = e; console.log("message: " + e.data); };
+    return {ME: ME, evtSource: evtSource};
+}
+
 $(document).ready(function() {
     // var world = run_demo();
     // console.log("World created:");
     // console.log(world);
+    var out = prep();
+    var ME = out.ME;
+    var evtSource = out.evtSource;
+    // window.setTimeout(function(){ document.location.reload(true); }, 30000);
+    
 });
